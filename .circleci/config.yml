@@ -1,0 +1,14 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: cimg/node:lts
+    steps:
+      - run:
+          name: プロジェクトの「Environment Variables」で定義された環境変数を利用する
+          command: echo "EXAMPLE_VARIABLES is '${EXAMPLE_VARIABLES}'"
+      - run:
+          name: ステップで同名の環境変数を定義すると上書きされる
+          environment:
+            EXAMPLE_VARIABLES: abcdefgeijk
+          command: echo "EXAMPLE_VARIABLES is '${EXAMPLE_VARIABLES}'"
